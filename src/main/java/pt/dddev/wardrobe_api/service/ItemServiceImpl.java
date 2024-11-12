@@ -1,5 +1,7 @@
 package pt.dddev.wardrobe_api.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +13,13 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     ItemRepository itemRepository;
 
-    public Item addItem(String name) {
-        Item item = new Item(name);
+    public Item addItem(Item item) {
         return itemRepository.save(item);
+    }
+
+    public Optional<Item> removeItemById(Long id) {
+        Optional<Item> item = itemRepository.findById(id);
+        item.ifPresent(itemRepository::delete);
+        return item;
     }
 }

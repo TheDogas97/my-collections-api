@@ -14,6 +14,10 @@ public class Item {
     private String type;
     private String category;
 
+    // CONSTRUCTORES
+    public Item() {
+    }
+
     public Item(String name) {
         this.name = name;
     }
@@ -51,5 +55,4 @@ public class Item {
     public String getCategory() {
         return category;
     }
-
 }
