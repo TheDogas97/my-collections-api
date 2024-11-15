@@ -30,14 +30,20 @@ public class ItemController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Item> addItem(@RequestBody Item item) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(itemService.addItem(item));
+    public ResponseEntity<List<ItemDTO>> addItem(@RequestBody List<Item> items) {
+        return items.isEmpty()
+                ? ResponseEntity
+                        .noContent()
+                        .build()
+                : ResponseEntity
+                        .status(HttpStatus.CREATED)
+                        .body(itemService.addItems(items));
     }
 
     @GetMapping("/list")
     public List<ItemDTO> listItems() {
-        return itemService.getItems();
+        return itemService
+                .getItems();
     }
 
     @DeleteMapping("/remove/{id}")

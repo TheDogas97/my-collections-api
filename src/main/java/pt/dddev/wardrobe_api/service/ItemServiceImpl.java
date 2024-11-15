@@ -20,8 +20,12 @@ public class ItemServiceImpl implements ItemService {
         this.itemDTOMapper = itemDTOMapper;
     }
 
-    public Item addItem(Item item) {
-        return itemRepository.save(item);
+    public List<ItemDTO> addItems(List<Item> items) {
+        return itemRepository
+                .saveAll(items)
+                .stream()
+                .map(itemDTOMapper::apply)
+                .toList();
     }
 
     public List<ItemDTO> getItems() {
