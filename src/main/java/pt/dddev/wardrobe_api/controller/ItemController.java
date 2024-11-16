@@ -41,19 +41,27 @@ public class ItemController {
     }
 
     @GetMapping("/list")
-    public List<ItemDTO> listItems() {
-        return itemService
+    public ResponseEntity<List<ItemDTO>> listItems() {
+        List<ItemDTO> items = itemService
                 .getItems();
+
+        return items.isEmpty()
+                ? ResponseEntity
+                        .noContent()
+                        .build()
+                : ResponseEntity
+                        .accepted()
+                        .body(items);
     }
 
     @DeleteMapping("/remove/{id}")
     public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
-        if (itemService.removeItemById(id).isPresent())
-            return ResponseEntity
-                    .noContent()
-                    .build();
-        return ResponseEntity
-                .notFound()
-                .build();
+        return itemService.removeItemById(id).isPresent()
+                ? ResponseEntity
+                        .ok()
+                        .build()
+                : ResponseEntity
+                        .notFound()
+                        .build();
     }
 }
