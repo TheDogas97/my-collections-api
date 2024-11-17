@@ -50,7 +50,7 @@ public class ItemController {
                         .noContent()
                         .build()
                 : ResponseEntity
-                        .accepted()
+                        .ok()
                         .body(items);
     }
 
