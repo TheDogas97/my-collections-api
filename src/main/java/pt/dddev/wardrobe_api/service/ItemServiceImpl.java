@@ -36,9 +36,22 @@ public class ItemServiceImpl implements ItemService {
                 .toList();
     }
 
-    @Override
-    public Optional<Item> getItemById(Long id) {
-        throw new UnsupportedOperationException("Unimplemented method 'getItemById'");
+    public Optional<ItemDTO> editItem(Long id, Item newItem) {
+        Optional<Item> opItem = itemRepository.findById(id);
+        if (opItem.isPresent()) {
+            Item item = opItem.get();
+            if (newItem.getName() != null)
+                item.setName(newItem.getName());
+            if (newItem.getCategory() != null)
+                item.setCategory(newItem.getCategory());
+            if (newItem.getType() != null)
+                item.setType(newItem.getType());
+
+            itemRepository.save(item);
+            return Optional.of(itemDTOMapper.apply(item));
+        }
+
+        return Optional.empty();
     }
 
     public Optional<Item> removeItemById(Long id) {

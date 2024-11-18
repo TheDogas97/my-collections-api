@@ -1,6 +1,7 @@
 package pt.dddev.wardrobe_api.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,50 +21,65 @@ import pt.dddev.wardrobe_api.service.ItemService;
 @RequestMapping("/item")
 public class ItemController {
 
-    private final ItemService itemService;
+        private final ItemService itemService;
 
-    public ItemController(ItemService itemService) {
-        this.itemService = itemService;
-    }
+        public ItemController(ItemService itemService) {
+                this.itemService = itemService;
+        }
 
-    @GetMapping("/hello")
-    public String getHello() {
-        return "Hello from Item!";
-    }
+        @GetMapping("/hello")
+        public String getHello() {
+                return "Hello from Item!";
+        }
 
-    @PostMapping("/add")
-    public ResponseEntity<List<ItemDTO>> addItem(@RequestBody List<Item> items) {
-        return items.isEmpty()
-                ? ResponseEntity
-                        .noContent()
-                        .build()
-                : ResponseEntity
-                        .status(HttpStatus.CREATED)
-                        .body(itemService.addItems(items));
-    }
+        // C - CREATE
+        @PostMapping("/add")
+        public ResponseEntity<List<ItemDTO>> addItem(@RequestBody List<Item> items) {
+                return items.isEmpty()
+                                ? ResponseEntity
+                                                .noContent()
+                                                .build()
+                                : ResponseEntity
+                                                .status(HttpStatus.CREATED)
+                                                .body(itemService.addItems(items));
+        }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<ItemDTO>> listItems() {
-        List<ItemDTO> items = itemService
-                .getItems();
+        // R - READ
+        @GetMapping("/list")
+        public ResponseEntity<List<ItemDTO>> listItems() {
+                List<ItemDTO> items = itemService
+                                .getItems();
 
-        return items.isEmpty()
-                ? ResponseEntity
-                        .noContent()
-                        .build()
-                : ResponseEntity
-                        .ok()
-                        .body(items);
-    }
+                return items.isEmpty()
+                                ? ResponseEntity
+                                                .noContent()
+                                                .build()
+                                : ResponseEntity
+                                                .ok(items);
+        }
 
-    @DeleteMapping("/remove/{id}")
-    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
-        return itemService.removeItemById(id).isPresent()
-                ? ResponseEntity
-                        .ok()
-                        .build()
-                : ResponseEntity
-                        .notFound()
-                        .build();
-    }
+        // U - UPDATE
+        @PostMapping("/edit")
+        public ResponseEntity<ItemDTO> editItem(@PathVariable Long id, @RequestBody Item item) {
+                Optional<ItemDTO> updatedItem = itemService.editItem(id, item);
+
+                return updatedItem.isPresent()
+                                ? ResponseEntity
+                                                .ok(updatedItem.get())
+                                : ResponseEntity
+                                                .notFound()
+                                                .build();
+        }
+
+        // D - DELETE
+        @DeleteMapping("/remove/{id}")
+        public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
+                return itemService.removeItemById(id).isPresent()
+                                ? ResponseEntity
+                                                .ok()
+                                                .build()
+                                : ResponseEntity
+                                                .notFound()
+                                                .build();
+        }
 }

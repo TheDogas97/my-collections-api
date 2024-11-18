@@ -11,7 +11,7 @@ public interface ItemService {
 
     public List<ItemDTO> getItems();
 
-    public Optional<Item> getItemById(Long id);
+    public Optional<ItemDTO> editItem(Long id, Item item);
 
     public Optional<Item> removeItemById(Long id);
 }
