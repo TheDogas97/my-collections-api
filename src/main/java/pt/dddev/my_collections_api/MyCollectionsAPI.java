@@ -1,12 +1,12 @@
-package pt.dddev.wardrobe_api;
+package pt.dddev.my_collections_api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class MyCollectionsAPI {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(MyCollectionsAPI.class, args);
 	}
 }

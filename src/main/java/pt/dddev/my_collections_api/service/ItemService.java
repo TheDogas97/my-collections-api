@@ -1,4 +1,4 @@
-package pt.dddev.wardrobe_api.service;
+package pt.dddev.my_collections_api.service;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package pt.dddev.wardrobe_api.entity;
+package pt.dddev.my_collections_api.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

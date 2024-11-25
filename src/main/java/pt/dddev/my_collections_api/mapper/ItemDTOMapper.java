@@ -1,4 +1,4 @@
-package pt.dddev.wardrobe_api.mapper;
+package pt.dddev.my_collections_api.mapper;
 
 import java.util.function.Function;
 

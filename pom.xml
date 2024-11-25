@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pt.dddev</groupId>
-	<artifactId>wardrobe-api</artifactId>
+	<artifactId>my-collections-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>wardrobe-api</name>
+	<name>My Collections API</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

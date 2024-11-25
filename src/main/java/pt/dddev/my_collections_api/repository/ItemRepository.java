@@ -1,4 +1,4 @@
-package pt.dddev.wardrobe_api.repository;
+package pt.dddev.my_collections_api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

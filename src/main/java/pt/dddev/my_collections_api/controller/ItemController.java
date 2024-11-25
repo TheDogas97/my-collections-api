@@ -1,4 +1,4 @@
-package pt.dddev.wardrobe_api.controller;
+package pt.dddev.my_collections_api.controller;
 
 import java.util.List;
 import java.util.Optional;
