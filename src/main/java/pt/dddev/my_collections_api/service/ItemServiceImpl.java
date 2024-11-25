@@ -5,10 +5,10 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import pt.dddev.wardrobe_api.dto.ItemDTO;
-import pt.dddev.wardrobe_api.entity.Item;
-import pt.dddev.wardrobe_api.mapper.ItemDTOMapper;
-import pt.dddev.wardrobe_api.repository.ItemRepository;
+import pt.dddev.my_collections_api.dto.ItemDTO;
+import pt.dddev.my_collections_api.entity.Item;
+import pt.dddev.my_collections_api.mapper.ItemDTOMapper;
+import pt.dddev.my_collections_api.repository.ItemRepository;
 
 @Service
 public class ItemServiceImpl implements ItemService {

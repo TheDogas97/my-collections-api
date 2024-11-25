@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pt.dddev.wardrobe_api.dto.ItemDTO;
-import pt.dddev.wardrobe_api.entity.Item;
-import pt.dddev.wardrobe_api.service.ItemService;
+import pt.dddev.my_collections_api.dto.ItemDTO;
+import pt.dddev.my_collections_api.entity.Item;
+import pt.dddev.my_collections_api.service.ItemService;
 
 @RestController
 @RequestMapping("/item")

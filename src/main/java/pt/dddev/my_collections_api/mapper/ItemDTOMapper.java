@@ -4,8 +4,8 @@ import java.util.function.Function;
 
 import org.springframework.stereotype.Service;
 
-import pt.dddev.wardrobe_api.dto.ItemDTO;
-import pt.dddev.wardrobe_api.entity.Item;
+import pt.dddev.my_collections_api.dto.ItemDTO;
+import pt.dddev.my_collections_api.entity.Item;
 
 @Service
 public class ItemDTOMapper implements Function<Item, ItemDTO> {
